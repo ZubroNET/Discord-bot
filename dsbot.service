@@ -1,0 +1,16 @@
+[Unit]
+Description=Discord BOT 
+
+[Service]
+User=root
+Type=simple
+TimeoutSec=0
+PIDFile=/var/run/dsbot.pid
+ExecStart=/usr/bin/node /usr/local/node/discord_bot/dsbot.js
+ExecStop=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+Restart=on-failure
+RestartSec=30s
+
